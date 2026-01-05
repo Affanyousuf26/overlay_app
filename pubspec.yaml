@@ -39,7 +39,7 @@ dependencies:
   provider: ^6.1.5+1
   url_launcher: ^6.3.2
   android_intent_plus: ^6.0.0
-  desktop_multi_window: ^0.3.0
+  desktop_multi_window: 0.2.0 # Downgraded from 0.3.0 to ensure API compatibility
   window_manager: ^0.3.9
   process_run: ^0.13.0
 
