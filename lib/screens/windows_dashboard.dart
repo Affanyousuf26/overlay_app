@@ -37,7 +37,7 @@ class _WindowsDashboardState extends State<WindowsDashboard> with WindowListener
 
   Future<void> _closeOverlay() async {
     if (overlayWindowId != null) {
-      await DesktopMultiWindow.closeWindow(overlayWindowId!);
+      await WindowController.fromWindowId(overlayWindowId!).close();
       setState(() => overlayWindowId = null);
     }
   }
