@@ -16,23 +16,31 @@ class _WindowsDashboardState extends State<WindowsDashboard> with WindowListener
   Future<void> _startOverlay() async {
     if (overlayWindowId != null) return;
     
-    // TEMPORARY: Commented out for Android compatibility test
-    // final window = await DesktopMultiWindow.createWindow(jsonEncode({
-    //   'args': 'overlay_window'
-    // }));
-    // overlayWindowId = window.windowId;
+    // Create the overlay window
+    final window = await DesktopMultiWindow.createWindow(jsonEncode({
+      'args': 'overlay_window'
+    }));
+    overlayWindowId = window.windowId;
     
-    debugPrint("Windows Overlay creation temporarily disabled for Android build check");
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Windows Overlay Disabled during Android Debug")));
+    // Configure overlay window properties
+    // Note: The specific window properties (frameless, etc) are best set INSIDE the overlay window's initState
+    // But we can set initial bounds here.
+    window
+      ..setFrame(const Offset(100, 100) & const Size(400, 250))
+      ..center()
+      ..show();
+    
+    // debugPrint("Windows Overlay creation temporarily disabled for Android build check");
+    // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Windows Overlay Disabled during Android Debug")));
     
     setState(() {});
   }
 
   Future<void> _closeOverlay() async {
-    // if (overlayWindowId != null) {
-      // await DesktopMultiWindow.closeWindow(overlayWindowId!);
-      // setState(() => overlayWindowId = null);
-    // }
+    if (overlayWindowId != null) {
+      await DesktopMultiWindow.closeWindow(overlayWindowId!);
+      setState(() => overlayWindowId = null);
+    }
   }
 
   @override

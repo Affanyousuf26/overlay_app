@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const AndroidDashboard(), // Force Android Dashboard for now
+      home: io.Platform.isWindows ? const WindowsDashboard() : const AndroidDashboard(),
     );
   }
 }
