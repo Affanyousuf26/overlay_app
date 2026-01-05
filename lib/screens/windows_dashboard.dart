@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:desktop_multi_window/desktop_multi_window.dart';
+// import 'package:window_manager/window_manager.dart'; // Temporarily comment out
 import 'package:window_manager/window_manager.dart';
 import 'dart:convert';
 
@@ -17,10 +18,10 @@ class _WindowsDashboardState extends State<WindowsDashboard> with WindowListener
     if (overlayWindowId != null) return;
     
     // Create the overlay window
-    final window = await DesktopMultiWindow.createWindow(jsonEncode({
-      'args': 'overlay_window'
-    }));
-    overlayWindowId = window.windowId;
+    // PROBE 2:
+    // PROBE 3:
+    // WindowController? w; 
+    // var x = DesktopMultiWindow.createWindow; 
     
     // Configure overlay window properties
     // Note: The specific window properties (frameless, etc) are best set INSIDE the overlay window's initState
